@@ -9,8 +9,9 @@
   <!-- Sleek modern font -->
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Favicon -->
-  <link rel="icon" href="favicon.png" type="image/png">
+  <!-- Favicon (will work with either favicon.ico or favicon.png if present) -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" href="/favicon.png">
 
   <style>
     :root {
@@ -24,6 +25,10 @@
       --border: #e1d4dd;
       --max-width: 900px;
       color-scheme: light dark;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
@@ -52,23 +57,31 @@
     }
 
     @media (min-width: 720px){
-      .header-inner {flex-direction: row; justify-content: space-between; align-items: flex-end;}
+      .header-inner {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
     }
 
     .title-block h1 {
       font-size: clamp(2.1rem, 3vw, 2.7rem);
       margin: 0 0 0.25rem;
+      letter-spacing: 0.01em;
+      font-weight: 600;
     }
 
     .subtitle {
       margin: 0;
       color: #f7dfe9;
       font-size: 0.97rem;
+      max-width: 34rem;
     }
 
     nav {
       font-size: 0.93rem;
       display: flex;
+      flex-wrap: wrap;
       gap: 0.9rem;
     }
 
@@ -78,11 +91,15 @@
       text-decoration: none;
       border-bottom: 2px solid transparent;
       opacity: 0.9;
+      cursor: pointer;
+      font-weight: 400;
+      padding: 0.1rem 0;
     }
 
     nav a.active {
-      border-bottom-color: white;
+      border-bottom-color: #ffffff;
       opacity: 1;
+      font-weight: 500;
     }
 
     nav a:hover {
@@ -103,42 +120,118 @@
     }
 
     @media (max-width: 800px){
-      main {grid-template-columns: 1fr;}
+      main {
+        grid-template-columns: 1fr;
+      }
     }
 
-    section { margin-bottom: 2rem; }
-    h2 {font-size: 1.15rem; margin-bottom: 0.9rem; padding-bottom: 0.35rem; border-bottom: 1px solid var(--border);}
+    section {
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      font-size: 1.15rem;
+      margin: 0 0 0.9rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 1px solid var(--border);
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+
+    p {
+      margin: 0 0 0.75rem;
+    }
+
+    ul {
+      margin: 0.25rem 0 0.75rem;
+      padding-left: 1.1rem;
+    }
+
+    li + li {
+      margin-top: 0.25rem;
+    }
 
     .home-layout {
-      display: grid; grid-template-columns: 1.1fr 1.9fr; gap: 1.5rem;
+      display: grid;
+      grid-template-columns: 1.1fr 1.9fr;
+      gap: 1.5rem;
+      align-items: start;
     }
-    @media (max-width: 720px){.home-layout{grid-template-columns: 1fr;}}
+
+    @media (max-width: 720px){
+      .home-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .home-photo {
+      display: flex;
+      justify-content: center;
+    }
 
     .home-photo img {
-      width: 190px; height: 190px; border-radius: 50%;
-      object-fit: cover; border: 3px solid #ffffff;
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      border: 3px solid #ffffff;
     }
 
-    .home-text p {font-size: 0.93rem; line-height: 1.7;}
+    .home-text p {
+      font-size: 0.93rem;
+      line-height: 1.7;
+    }
 
-    .tab-section {display: none;}
-    .tab-section.active {display: block;}
+    .tab-section {
+      display: none;
+      animation: fadeIn 0.2s ease-out;
+    }
+
+    .tab-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(2px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
     .side-section {
       background: var(--bg-alt);
       border: 1px solid var(--border);
-      padding: 1rem 1.1rem; border-radius: 0.75rem;
+      border-radius: 0.75rem;
+      padding: 1rem 1.1rem;
       margin-bottom: 1rem;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+      font-size: 0.9rem;
+    }
+
+    .side-section h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1rem;
+      font-weight: 500;
     }
 
     a,
     a:visited {
       color: var(--accent-strong) !important;
+      text-decoration-thickness: 1px;
       text-underline-offset: 2px;
     }
 
-    .profile-link {display: inline-flex; align-items: center; gap: 0.45rem;}
-    .profile-link img {width: 16px; height: 16px;}
+    .profile-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .profile-link img {
+      width: 16px;
+      height: 16px;
+      display: inline-block;
+      vertical-align: middle;
+    }
 
     iframe {
       width: 100%;
@@ -149,9 +242,38 @@
     }
 
     footer {
-      margin-top: 2.25rem; padding-top: 0.75rem;
+      margin-top: 2.25rem;
+      padding-top: 0.75rem;
       border-top: 1px solid var(--border);
-      font-size: 0.8rem; color: var(--muted);
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: left;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #070309;
+        --bg-alt: #15101a;
+        --text: #f5edf5;
+        --muted: #a99aa9;
+        --accent: #d86a8c;
+        --accent-soft: rgba(216, 106, 140, 0.25);
+        --accent-strong: #f3a0bb;
+        --border: #332436;
+      }
+
+      body {
+        background: radial-gradient(circle at top, #251029 0, #070309 60%);
+      }
+
+      .side-section {
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+      }
+
+      nav a,
+      nav a:visited {
+        color: #ffffff !important;
+      }
     }
   </style>
 </head>
@@ -161,7 +283,9 @@
   <div class="header-inner">
     <div class="title-block">
       <h1>Nora Skjerdingstad</h1>
-      <p class="subtitle">PhD Student and Clinical Psychologist, Department of Experimental Psychology, University of Oxford</p>
+      <p class="subtitle">
+        PhD Student and Clinical Psychologist, University of Oxford
+      </p>
     </div>
     <nav>
       <a href="#home" data-target="home" class="active">Home</a>
@@ -175,7 +299,6 @@
 <div class="page">
   <main>
     <div>
-
       <!-- HOME -->
       <section id="home" class="tab-section active">
         <div class="home-layout">
@@ -200,14 +323,101 @@
 
         <ul>
           <li>
+            Skjerdingstad, N., Johnson, M. S., Johnson, S. U., Hoffart, A., &amp; Ebrahimi, O. V. (2025).
+            <strong>Daily dynamics of parental mental health: Investigating depressive symptoms and negative parental experiences.</strong>
+            <em>Journal of Psychiatric Research, 190</em>, 341–346.
+            <a href="https://pubmed.ncbi.nlm.nih.gov/40819622/" target="_blank" rel="noopener noreferrer">Article</a>
+            ·
+            <a href="https://doi.org/10.1016/j.jpsychires.2025.08.007" target="_blank" rel="noopener noreferrer">DOI</a>
+          </li>
+
+          <li>
+            Finnemann, A., Skjerdingstad, N., Speyer, L. G., Zavlis, O., Bartoš, F., Wiers, R., van der Maas, H., Sibley, C. G., Johnson, S. U., Helmich, M. A., Hoffart, A., &amp; Ebrahimi, O. V. (2025).
+            <strong>Urban–rural differences in anxiety and depression in the UK, New Zealand, and Norway.</strong>
+            <em>Journal of Affective Disorders, 388</em>, 119601.
+          </li>
+
+          <li>
+            Hoffart, A., Skjerdingstad, N., Freichel, R., Johnson, S. U., Epskamp, S., &amp; Ebrahimi, O. V. (2025).
+            <strong>Mapping the dynamics of generalized anxiety symptoms and actionable transdiagnostic mechanisms: A panel study.</strong>
+            <em>Depression and Anxiety</em>, 2025, 1885004.
+            <a href="https://doi.org/10.1002/da.23082" target="_blank" rel="noopener noreferrer">DOI</a>
+          </li>
+
+          <li>
+            Hoffart, A., Skjerdingstad, N., Freichel, R., Mansueto, A. C., Johnson, S. U., &amp; Ebrahimi, O. V. (2024).
+            <strong>Depressive symptoms and their mechanisms: An investigation of long-term patterns of interaction through a panel-network approach.</strong>
+            <em>Clinical Psychological Science, 12</em>(5), 903–916.
+          </li>
+
+          <li>
+            Skjerdingstad, N., Speyer, L. G., Isvoranu, A.-M., Moe, V., &amp; Fredriksen, E. (2024).
+            <strong>Dynamics of postnatal depressive symptoms in early parenthood.</strong>
+            <em>BMC Psychiatry, 24</em>, 523.
+            <a href="https://bmcpsychiatry.biomedcentral.com/articles/10.1186/s12888-024-05934-6" target="_blank" rel="noopener noreferrer">Article</a>
+            ·
+            <a href="https://doi.org/10.1186/s12888-024-05934-6" target="_blank" rel="noopener noreferrer">DOI</a>
+          </li>
+
+          <li>
+            Johnson, M. S., Skjerdingstad, N., Hoffart, A., Ebrahimi, O. V., &amp; Johnson, S. U. (2024).
+            <strong>Triggered by worry: A dynamic network analysis of COVID-19 pandemic-related anxiety and parental stress.</strong>
+            <em>Journal of Affective Disorders, 346</em>, 329–337.
+            <a href="https://pubmed.ncbi.nlm.nih.gov/37977301/" target="_blank" rel="noopener noreferrer">Article</a>
+            ·
+            <a href="https://doi.org/10.1016/j.jad.2023.10.127" target="_blank" rel="noopener noreferrer">DOI</a>
+          </li>
+
+          <li>
+            Skjerdingstad, N. (2024).
+            <strong>An inhibitory learning-based turn in exposure therapy.</strong>
+            <em>Nature Reviews Psychology, 3</em>, 726.
+            <a href="https://www.nature.com/articles/s44159-024-00370-5" target="_blank" rel="noopener noreferrer">Article</a>
+            ·
+            <a href="https://doi.org/10.1038/s44159-024-00370-5" target="_blank" rel="noopener noreferrer">DOI</a>
+          </li>
+
+          <li>
+            Skjerdingstad, N., Johnson, M. S., Johnson, S. U., Hoffart, A., &amp; Ebrahimi, O. V. (2022).
+            <strong>Parental burnout during the COVID-19 pandemic.</strong>
+            <em>Family Process, 61</em>(4), 1715–1729.
+            <a href="https://pubmed.ncbi.nlm.nih.gov/34908167/" target="_blank" rel="noopener noreferrer">Article</a>
+            ·
+            <a href="https://doi.org/10.1111/famp.12740" target="_blank" rel="noopener noreferrer">DOI</a>
+          </li>
+
+          <li>
+            Johnson, S. U., Amundsen, O. M., Johnson, M. S., Hoffart, A., Halsøy, Ø., Skjerdingstad, N., Ebling, S., &amp; Ebrahimi, O. V. (2022).
+            <strong>Psychiatric symptoms in COVID-19-positive individuals in the general population: Trajectories of depression, anxiety, and insomnia.</strong>
+            <em>Psychiatry Research, 317</em>, 114806.
+            <a href="https://pubmed.ncbi.nlm.nih.gov/36084543/" target="_blank" rel="noopener noreferrer">Article</a>
+            ·
+            <a href="https://doi.org/10.1016/j.psychres.2022.114806" target="_blank" rel="noopener noreferrer">DOI</a>
+          </li>
+
+          <li>
+            Johnson, M. S., Skjerdingstad, N., Ebrahimi, O. V., Hoffart, A., &amp; Johnson, S. U. (2021).
+            <strong>Mechanisms of parental distress during and after the first COVID-19 lockdown phase: A two-wave longitudinal study.</strong>
+            <em>PLOS ONE, 16</em>(6), e0253087.
+            <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0253087" target="_blank" rel="noopener noreferrer">Article</a>
+            ·
+            <a href="https://doi.org/10.1371/journal.pone.0253087" target="_blank" rel="noopener noreferrer">DOI</a>
+          </li>
+
+          <li>
             Skjerdingstad, N., Johnson, M. S., Johnson, S. U., Hoffart, A., &amp; Ebrahimi, O. V. (2021).
             <strong>Feelings of worthlessness links depressive symptoms and parental stress: A network analysis during the COVID-19 pandemic.</strong>
             <em>European Psychiatry, 64</em>(1), e50.
-            <a href="https://www.cambridge.org/core/journals/european-psychiatry/article/feelings-of-worthlessness-links-depressive-symptoms-and-parental-stress-a-network-analysis-during-the-covid19-pandemic/4E061A35F41D4BE1D946836BF8EE710D"
-               target="_blank" rel="noopener noreferrer">Article</a>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/34311806/" target="_blank" rel="noopener noreferrer">Article</a>
             ·
-            <a href="https://doi.org/10.1192/j.eurpsy.2021.2223"
-               target="_blank" rel="noopener noreferrer">DOI</a>
+            <a href="https://doi.org/10.1192/j.eurpsy.2021.2223" target="_blank" rel="noopener noreferrer">DOI</a>
+          </li>
+
+          <li>
+            Smith, K. V., Skjerdingstad, N., Ebrahimi, O. V., Maccallum, F., &amp; Ehlers, A. (2025).
+            <strong>Unraveling attachment: A network analysis of the cognitive pathways linking attachment and prolonged grief.</strong>
+            <em>Psychological Medicine</em>. Advance online publication.
+            <a href="https://doi.org/10.1017/S0033291725101669" target="_blank" rel="noopener noreferrer">DOI</a>
           </li>
         </ul>
       </section>
@@ -221,57 +431,49 @@
       <!-- CV -->
       <section id="cv" class="tab-section">
         <h2>CV</h2>
-
-        <!-- PDF preview -->
         <iframe src="CV_November2025.pdf"></iframe>
-
         <p>
           <a href="CV_November2025.pdf" target="_blank" rel="noopener noreferrer">
             Download my CV (PDF)
           </a>
         </p>
       </section>
-
     </div>
 
     <!-- SIDEBAR -->
     <aside>
       <div class="side-section">
         <h3>Contact</h3>
-        <ul class="contact-list">
-          <li>Email: <a href="mailto:nora.skjerdingstad@psy.ox.ac.uk">nora.skjerdingstad@psy.ox.ac.uk</a></li>
-          <li>Department of Experimental Psychology<br>University of Oxford</li>
-        </ul>
+        <p><strong>Email:</strong> <a href="mailto:nora.skjerdingstad@psy.ox.ac.uk">nora.skjerdingstad@psy.ox.ac.uk</a></p>
+        <p>Department of Experimental Psychology<br>University of Oxford</p>
       </div>
 
       <div class="side-section">
         <h3>Profiles &amp; Links</h3>
-        <ul class="link-list">
-          <li>
-            <a class="profile-link" href="https://scholar.google.com/citations?user=TSRnmxIAAAAJ&amp;hl=no" target="_blank">
-              <img src="scholar.svg" alt="">
-              <span>Google Scholar</span>
-            </a>
-          </li>
-          <li>
-            <a class="profile-link" href="https://www.researchgate.net/profile/Nora-Skjerdingstad?ev=hdr_xprf" target="_blank">
-              <img src="researchgate.svg" alt="">
-              <span>ResearchGate</span>
-            </a>
-          </li>
-          <li>
-            <a class="profile-link" href="https://bsky.app/profile/noraskjerdingstad.bsky.social" target="_blank">
-              <img src="bluesky.svg" alt="">
-              <span>Bluesky</span>
-            </a>
-          </li>
-          <li>
-            <a class="profile-link" href="https://www.psy.ox.ac.uk/people/nora-skjerdingstad" target="_blank">
-              <img src="oxford.svg" alt="">
-              <span>Academic website</span>
-            </a>
-          </li>
-        </ul>
+        <p>
+          <a class="profile-link" href="https://scholar.google.com/citations?user=TSRnmxIAAAAJ&amp;hl=no" target="_blank" rel="noopener noreferrer">
+            <img src="scholar.svg" alt="">
+            <span>Google Scholar</span>
+          </a>
+        </p>
+        <p>
+          <a class="profile-link" href="https://www.researchgate.net/profile/Nora-Skjerdingstad?ev=hdr_xprf" target="_blank" rel="noopener noreferrer">
+            <img src="researchgate.svg" alt="">
+            <span>ResearchGate</span>
+          </a>
+        </p>
+        <p>
+          <a class="profile-link" href="https://bsky.app/profile/noraskjerdingstad.bsky.social" target="_blank" rel="noopener noreferrer">
+            <img src="bluesky.svg" alt="">
+            <span>Bluesky</span>
+          </a>
+        </p>
+        <p>
+          <a class="profile-link" href="https://www.psy.ox.ac.uk/people/nora-skjerdingstad" target="_blank" rel="noopener noreferrer">
+            <img src="oxford.svg" alt="">
+            <span>Academic website</span>
+          </a>
+        </p>
       </div>
     </aside>
   </main>
@@ -289,7 +491,9 @@
 
   function activateTab(id) {
     sections.forEach(sec => sec.classList.toggle("active", sec.id === id));
-    navLinks.forEach(link => link.classList.toggle("active", link.getAttribute("data-target") === id));
+    navLinks.forEach(link =>
+      link.classList.toggle("active", link.getAttribute("data-target") === id)
+    );
   }
 
   navLinks.forEach(link => {
