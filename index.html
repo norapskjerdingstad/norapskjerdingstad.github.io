@@ -32,15 +32,10 @@
       line-height: 1.6;
     }
 
-    .page {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.25rem 3rem;
-    }
-
+    /* Full-width banner header */
     header {
-      margin: 0 -1.25rem 2.5rem;
-      padding: 1.5rem 1.75rem 1.25rem;
+      width: 100%;
+      padding: 1.5rem min(5vw, 2rem) 1.25rem;
       background: linear-gradient(135deg, var(--accent-strong), var(--accent));
       color: #fdf8fb;
       box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
@@ -83,7 +78,7 @@
 
     nav a {
       text-decoration: none;
-      color: #fdebf3;
+      color: #ffffff; /* strong white for contrast */
       padding: 0.1rem 0;
       border-bottom: 2px solid transparent;
       opacity: 0.9;
@@ -101,8 +96,13 @@
       opacity: 1;
     }
 
+    .page {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2.25rem 1.25rem 3rem;
+    }
+
     main {
-      margin-top: 2rem;
       display: grid;
       grid-template-columns: minmax(0, 2.5fr) minmax(0, 1.4fr);
       gap: 2.25rem;
@@ -264,28 +264,33 @@
       .side-section {
         box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
       }
+
+      nav a {
+        color: #fff;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <header>
-      <div class="header-inner">
-        <div class="title-block">
-          <h1>Nora Skjerdingstad</h1>
-          <p class="subtitle">
-            PhD Student and Clinical Psychologist, Department of Experimental Psychology, University of Oxford
-          </p>
-        </div>
-        <nav>
-          <a href="#about" data-target="about" class="active">About</a>
-          <a href="#publications" data-target="publications">Publications</a>
-          <a href="#teaching-talks" data-target="teaching-talks">Teaching &amp; Talks</a>
-          <a href="#cv" data-target="cv">CV</a>
-        </nav>
+  <!-- Full-width banner -->
+  <header>
+    <div class="header-inner">
+      <div class="title-block">
+        <h1>Nora Skjerdingstad</h1>
+        <p class="subtitle">
+          PhD Student and Clinical Psychologist, Department of Experimental Psychology, University of Oxford
+        </p>
       </div>
-    </header>
+      <nav>
+        <a href="#about" data-target="about" class="active">About</a>
+        <a href="#publications" data-target="publications">Publications</a>
+        <a href="#teaching-talks" data-target="teaching-talks">Teaching &amp; Talks</a>
+        <a href="#cv" data-target="cv">CV</a>
+      </nav>
+    </div>
+  </header>
 
+  <div class="page">
     <main>
       <!-- Main content: tabbed sections -->
       <div>
@@ -319,17 +324,6 @@
             A selection of publications will appear here. For a full and up-to-date list, please see my
             <a href="https://scholar.google.com/citations?user=TSRnmxIAAAAJ&amp;hl=no" target="_blank" rel="noopener noreferrer">Google Scholar profile</a>.
           </p>
-          <!--
-          Example structure for later:
-
-          <ul>
-            <li>
-              Skjerdingstad, N., &amp; Coauthor, A. (Year).
-              Title of the paper. <em>Journal Name</em>.
-              <a href="LINK_TO_DOI_OR_PDF">Link</a>
-            </li>
-          </ul>
-          -->
         </section>
 
         <!-- TEACHING & TALKS -->
@@ -338,19 +332,6 @@
           <p>
             Information about teaching activities (e.g., seminars, guest lectures, and workshops) and selected talks will be added here.
           </p>
-          <!--
-          Example items for later:
-
-          <h3>Teaching</h3>
-          <ul>
-            <li>Course / seminar title – role, institution, year.</li>
-          </ul>
-
-          <h3>Talks</h3>
-          <ul>
-            <li>"Title of talk" – Conference / Department Seminar, Location, Year.</li>
-          </ul>
-          -->
         </section>
 
         <!-- CV -->
@@ -360,7 +341,6 @@
             A PDF version of my CV is available here:
           </p>
           <p>
-            <!-- Make sure this filename matches the PDF you uploaded -->
             <a href="CV_November2025.pdf" target="_blank" rel="noopener noreferrer">
               Download my CV (PDF)
             </a>
@@ -405,7 +385,7 @@
     // Update year automatically
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Simple tab behaviour
+    // Simple tab behaviour (no URL hash logic)
     const navLinks = document.querySelectorAll("nav a[data-target]");
     const sections = document.querySelectorAll(".tab-section");
 
@@ -423,17 +403,11 @@
         e.preventDefault();
         const target = link.getAttribute("data-target");
         activateTab(target);
-        history.replaceState(null, "", "#" + target);
       });
     });
 
-    // If URL has a hash (e.g., /#cv), activate that tab on load
-    window.addEventListener("DOMContentLoaded", () => {
-      const hash = window.location.hash.replace("#", "");
-      if (hash && document.getElementById(hash)) {
-        activateTab(hash);
-      }
-    });
+    // Ensure About is active on first load
+    activateTab("about");
   </script>
 </body>
 </html>
