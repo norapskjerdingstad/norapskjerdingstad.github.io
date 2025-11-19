@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Nora Skjerdingstad</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 650px;
+      margin: 40px auto;
+      padding: 0 20px;
+      line-height: 1.6;
+    }
+    h1 {
+      margin-bottom: 0;
+    }
+    .subtitle {
+      margin-top: 0;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Nora Skjerdingstad</h1>
+<p class="subtitle">Personal website – under construction</p>
+
+<p>Hello! This is my new website. More content coming soon.</p>
+
+</body>
+</html>
