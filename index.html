@@ -6,24 +6,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Nora Skjerdingstad – PhD Student and Clinical Psychologist, University of Oxford" />
 
-  <!-- Modern, readable font -->
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
-
   <link rel="icon" type="image/png" href="favicon.png?v=1">
 
   <style>
     :root{
-      --bg: #ffffff;
+      /* Light mode palette (calmer + slightly warmer) */
+      --bg: #fdfbfc;            /* warm off-white */
       --surface: #ffffff;
-      --surface-2: #fbf6f9;
-      --text: #19101a;
-      --muted: #6b626c;
-      --accent: #b84560;
-      --accent-strong: #8d2b3f;
-      --border: #eadbe5;
-      --shadow: 0 10px 30px rgba(0,0,0,0.06);
-      --max-width: 980px;
+      --surface-2: #fbf6f8;     /* very subtle blush */
+      --text: #1a111b;
+      --muted: #6a616b;
 
+      /* Softer academic burgundy */
+      --accent: #a94a61;        /* softened */
+      --accent-strong: #7a2336; /* deeper, less saturated */
+
+      --border: #eadfe6;        /* slightly softer border */
+      --shadow: 0 10px 30px rgba(17, 8, 16, 0.06);
+
+      --max-width: 980px;
       --radius: 14px;
       --radius-sm: 10px;
 
@@ -34,35 +36,38 @@
       --space-5: 2rem;
       --space-6: 2.75rem;
 
-      --focus: 0 0 0 3px rgba(184, 69, 96, 0.35);
+      --focus: 0 0 0 3px rgba(169, 74, 97, 0.32);
+
       color-scheme: light;
     }
 
     @media (prefers-color-scheme: dark){
       :root{
-        --bg: #070309;
+        /* Dark mode palette (less glare, still cohesive) */
+        --bg: #07030a;
         --surface: #120a14;
         --surface-2: #1a1020;
-        --text: #f6edf6;
-        --muted: #b4a5b4;
-        --accent: #f3a0bb;
-        --accent-strong: #ffb7cc;
+        --text: #f1eaf1;        /* softer than pure white */
+        --muted: #b6a8b6;
+
+        --accent: #f1a8bf;
+        --accent-strong: #ffc1d4;
+
         --border: #332436;
-        --shadow: 0 12px 34px rgba(0,0,0,0.5);
+        --shadow: 0 12px 34px rgba(0,0,0,0.52);
+
         color-scheme: dark;
       }
     }
 
     *{ box-sizing: border-box; }
 
-    html{
-      scroll-behavior: smooth;
-    }
+    html{ scroll-behavior: smooth; }
 
     body{
       margin:0;
       font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, var(--surface-2) 0, var(--bg) 55%);
+      background: radial-gradient(circle at top, var(--surface-2) 0, var(--bg) 58%);
       color: var(--text);
       line-height: 1.65;
       font-size: 16px;
@@ -93,7 +98,8 @@
     header{
       width:100%;
       padding: var(--space-6) min(5vw, 2rem) var(--space-5);
-      background: linear-gradient(135deg, #7b2336, #b84560);
+      /* Softer, more restrained header gradient */
+      background: linear-gradient(135deg, #6e1e30, #a94a61);
       color:#fff;
     }
 
@@ -123,7 +129,7 @@
     .subtitle{
       margin:0;
       max-width: 40rem;
-      color: rgba(255,255,255,0.88);
+      color: rgba(255,255,255,0.9);
       font-size: 1.02rem;
     }
 
@@ -143,8 +149,15 @@
       font-weight: 450;
     }
 
-    nav a:hover{ opacity:1; border-bottom-color: rgba(255,255,255,0.65); }
-    nav a.active{ opacity:1; border-bottom-color:#fff; font-weight: 600; }
+    nav a:hover{
+      opacity:1;
+      border-bottom-color: rgba(255,255,255,0.6);
+    }
+    nav a.active{
+      opacity:1;
+      border-bottom-color:#fff;
+      font-weight: 600;
+    }
 
     nav a:focus-visible{
       outline: none;
@@ -171,7 +184,6 @@
       .layout{ grid-template-columns: 1fr; }
     }
 
-    /* Main content surface */
     .content-surface{
       background: var(--surface);
       border: 1px solid var(--border);
@@ -217,7 +229,7 @@
       border-radius: 999px;
       object-fit: cover;
       border: 4px solid rgba(255,255,255,0.95);
-      box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.10);
     }
 
     .tab-section{ display:none; animation: fadeIn 0.22s ease-out; }
@@ -228,7 +240,6 @@
       to{ opacity:1; transform: translateY(0); }
     }
 
-    /* Publications list */
     ul{
       margin: 0;
       padding: 0;
@@ -256,7 +267,6 @@
       border-radius: 6px;
     }
 
-    /* Sidebar cards */
     .side-section{
       background: var(--surface);
       border: 1px solid var(--border);
@@ -301,7 +311,6 @@
       color: var(--muted);
     }
 
-    /* Reduce motion preference */
     @media (prefers-reduced-motion: reduce){
       *{ animation: none !important; transition: none !important; scroll-behavior: auto !important; }
     }
@@ -353,6 +362,7 @@
           </p>
 
           <ul class="publication-list">
+
             <li>
               <strong>2025</strong><br>
               Smith, K. V., Skjerdingstad, N., Ebrahimi, O. V., Maccallum, F., &amp; Ehlers, A.
@@ -445,6 +455,7 @@
               <a href="https://pubmed.ncbi.nlm.nih.gov/34311806/" target="_blank" rel="noopener noreferrer">Article</a> ·
               <a href="https://doi.org/10.1192/j.eurpsy.2021.2223" target="_blank" rel="noopener noreferrer">DOI</a>
             </li>
+
           </ul>
         </section>
 
@@ -515,13 +526,15 @@
     function activateTab(id, pushHash = true){
       sections.forEach(sec => sec.classList.toggle('active', sec.id === id));
       navLinks.forEach(link => link.classList.toggle('active', link.dataset.target === id));
-
-      if (pushHash) {
-        history.pushState({ tab: id }, '', '#' + id);
-      }
+      if (pushHash) history.pushState({ tab: id }, '', '#' + id);
     }
 
-    // Click navigation
+    function initialTab(){
+      const hash = (location.hash || '#home').replace('#','');
+      const match = [...sections].some(s => s.id === hash) ? hash : 'home';
+      activateTab(match, false);
+    }
+
     navLinks.forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
@@ -529,16 +542,7 @@
       });
     });
 
-    // Load from hash (deep linking)
-    function initialTab(){
-      const hash = (location.hash || '#home').replace('#','');
-      const match = [...sections].some(s => s.id === hash) ? hash : 'home';
-      activateTab(match, false);
-    }
-
-    // Back/forward support
     window.addEventListener('popstate', () => initialTab());
-
     initialTab();
   </script>
 </body>
