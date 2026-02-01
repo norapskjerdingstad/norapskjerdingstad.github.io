@@ -6,26 +6,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Nora Skjerdingstad – PhD Student and Clinical Psychologist, University of Oxford" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="favicon.png?v=1">
 
   <style>
     :root{
-      /* Light mode palette (calmer + slightly warmer) */
-      --bg: #fdfbfc;            /* warm off-white */
+      /* Professional palette: Oxford-ish navy + muted burgundy accent */
+      --bg: #f6f7f9;
       --surface: #ffffff;
-      --surface-2: #fbf6f8;     /* very subtle blush */
-      --text: #1a111b;
-      --muted: #6a616b;
+      --surface-2: #f1f3f6;
 
-      /* Softer academic burgundy */
-      --accent: #a94a61;        /* softened */
-      --accent-strong: #7a2336; /* deeper, less saturated */
+      --text: #12161f;
+      --muted: #5a6472;
 
-      --border: #eadfe6;        /* slightly softer border */
-      --shadow: 0 10px 30px rgba(17, 8, 16, 0.06);
+      --accent: #7a2a3a;          /* muted burgundy */
+      --accent-strong: #5c1d2a;   /* deeper burgundy */
+      --header-1: #0b1f35;        /* deep navy */
+      --header-2: #132f4d;        /* navy */
 
-      --max-width: 980px;
+      --border: #e3e7ee;
+      --shadow: 0 14px 40px rgba(10, 20, 35, 0.08);
+
+      --max-width: 1020px;
       --radius: 14px;
       --radius-sm: 10px;
 
@@ -33,41 +35,43 @@
       --space-2: 0.75rem;
       --space-3: 1rem;
       --space-4: 1.5rem;
-      --space-5: 2rem;
-      --space-6: 2.75rem;
+      --space-5: 2.25rem;
+      --space-6: 3rem;
 
-      --focus: 0 0 0 3px rgba(169, 74, 97, 0.32);
+      --focus: 0 0 0 3px rgba(122, 42, 58, 0.28);
 
       color-scheme: light;
     }
 
     @media (prefers-color-scheme: dark){
       :root{
-        /* Dark mode palette (less glare, still cohesive) */
-        --bg: #07030a;
-        --surface: #120a14;
-        --surface-2: #1a1020;
-        --text: #f1eaf1;        /* softer than pure white */
-        --muted: #b6a8b6;
+        --bg: #070a10;
+        --surface: #0c111b;
+        --surface-2: #101827;
 
-        --accent: #f1a8bf;
-        --accent-strong: #ffc1d4;
+        --text: #eef2f7;
+        --muted: #b6c0cf;
 
-        --border: #332436;
-        --shadow: 0 12px 34px rgba(0,0,0,0.52);
+        --accent: #d39aa7;
+        --accent-strong: #efc0cb;
+
+        --header-1: #071728;
+        --header-2: #0b2138;
+
+        --border: #1f2a3a;
+        --shadow: 0 16px 50px rgba(0,0,0,0.55);
 
         color-scheme: dark;
       }
     }
 
     *{ box-sizing: border-box; }
-
     html{ scroll-behavior: smooth; }
 
     body{
       margin:0;
       font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, var(--surface-2) 0, var(--bg) 58%);
+      background: linear-gradient(180deg, var(--surface-2) 0%, var(--bg) 55%);
       color: var(--text);
       line-height: 1.65;
       font-size: 16px;
@@ -76,7 +80,7 @@
       text-rendering: optimizeLegibility;
     }
 
-    /* Accessibility: skip link */
+    /* Skip link */
     .skip-link{
       position:absolute;
       left:-999px;
@@ -95,12 +99,12 @@
       box-shadow: var(--focus), var(--shadow);
     }
 
+    /* Header */
     header{
-      width:100%;
-      padding: var(--space-6) min(5vw, 2rem) var(--space-5);
-      /* Softer, more restrained header gradient */
-      background: linear-gradient(135deg, #6e1e30, #a94a61);
+      background: linear-gradient(135deg, var(--header-1), var(--header-2));
       color:#fff;
+      padding: var(--space-6) min(5vw, 2rem) var(--space-4);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
     }
 
     .header-inner{
@@ -108,7 +112,7 @@
       margin: 0 auto;
       display:flex;
       flex-direction: column;
-      gap: var(--space-4);
+      gap: var(--space-3);
     }
 
     @media (min-width: 760px){
@@ -116,24 +120,39 @@
         flex-direction: row;
         align-items: flex-end;
         justify-content: space-between;
+        gap: var(--space-5);
       }
     }
 
     .title-block h1{
-      margin:0 0 0.2rem;
-      font-size: clamp(2.1rem, 3.1vw, 2.8rem);
+      margin:0 0 0.25rem;
+      font-size: clamp(2.05rem, 3.1vw, 2.85rem);
       letter-spacing: 0.01em;
-      font-weight: 600;
+      font-weight: 650;
     }
 
     .subtitle{
       margin:0;
-      max-width: 40rem;
-      color: rgba(255,255,255,0.9);
+      max-width: 44rem;
+      color: rgba(255,255,255,0.88);
       font-size: 1.02rem;
     }
 
+    /* Sticky nav */
+    .nav-wrap{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      background: color-mix(in srgb, var(--header-1) 70%, transparent);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
     nav{
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.65rem min(5vw, 2rem);
       display:flex;
       flex-wrap: wrap;
       gap: 0.9rem;
@@ -143,39 +162,38 @@
     nav a{
       color:#fff;
       text-decoration:none;
-      padding: 0.2rem 0;
+      padding: 0.25rem 0.1rem;
       border-bottom: 2px solid transparent;
-      opacity: 0.9;
-      font-weight: 450;
+      opacity: 0.88;
+      font-weight: 500;
     }
-
     nav a:hover{
       opacity:1;
-      border-bottom-color: rgba(255,255,255,0.6);
+      border-bottom-color: rgba(255,255,255,0.55);
     }
     nav a.active{
       opacity:1;
       border-bottom-color:#fff;
-      font-weight: 600;
+      font-weight: 650;
     }
-
     nav a:focus-visible{
       outline: none;
       box-shadow: var(--focus);
-      border-radius: 6px;
-      padding: 0.2rem 0.35rem;
+      border-radius: 8px;
+      padding: 0.25rem 0.45rem;
       margin: 0 -0.35rem;
     }
 
+    /* Layout */
     .page{
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: var(--space-6) 1.25rem 3.5rem;
+      padding: var(--space-5) 1.25rem 3.5rem;
     }
 
     .layout{
       display:grid;
-      grid-template-columns: 2.6fr 1.3fr;
+      grid-template-columns: 2.7fr 1.2fr;
       gap: var(--space-5);
       align-items: start;
     }
@@ -189,7 +207,7 @@
       border: 1px solid var(--border);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: clamp(1rem, 2.2vw, 1.6rem);
+      padding: clamp(1.05rem, 2.2vw, 1.75rem);
     }
 
     section{ margin-bottom: var(--space-5); }
@@ -199,21 +217,21 @@
       margin: 0 0 var(--space-3);
       padding-bottom: var(--space-2);
       border-bottom: 1px solid var(--border);
-      font-size: 1.15rem;
-      font-weight: 600;
+      font-size: 1.12rem;
+      font-weight: 700;
       letter-spacing: 0.01em;
     }
 
     p{ margin: 0 0 var(--space-3); }
     p:last-child{ margin-bottom: 0; }
 
+    /* Home */
     .home-layout{
       display:grid;
       grid-template-columns: 220px 1fr;
       gap: var(--space-5);
       align-items: start;
     }
-
     @media (max-width: 760px){
       .home-layout{ grid-template-columns: 1fr; }
     }
@@ -228,18 +246,19 @@
       height: 210px;
       border-radius: 999px;
       object-fit: cover;
-      border: 4px solid rgba(255,255,255,0.95);
-      box-shadow: 0 10px 22px rgba(0,0,0,0.10);
+      border: 4px solid rgba(255,255,255,0.92);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.12);
     }
 
     .tab-section{ display:none; animation: fadeIn 0.22s ease-out; }
     .tab-section.active{ display:block; }
 
     @keyframes fadeIn{
-      from{ opacity:0; transform: translateY(3px); }
+      from{ opacity:0; transform: translateY(4px); }
       to{ opacity:1; transform: translateY(0); }
     }
 
+    /* Publications list */
     ul{
       margin: 0;
       padding: 0;
@@ -247,31 +266,32 @@
     }
 
     ul.publication-list li{
-      padding: 0.85rem 0;
+      padding: 0.95rem 0;
       border-bottom: 1px dashed var(--border);
     }
     ul.publication-list li:last-child{
       border-bottom: none;
     }
 
+    /* Links */
     a{
       color: var(--accent-strong);
       text-decoration-thickness: 1px;
       text-underline-offset: 2px;
     }
     a:hover{ text-decoration-thickness: 2px; }
-
     a:focus-visible{
       outline: none;
       box-shadow: var(--focus);
-      border-radius: 6px;
+      border-radius: 8px;
     }
 
+    /* Sidebar cards */
     .side-section{
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 1.1rem 1.2rem;
+      padding: 1.05rem 1.15rem;
       box-shadow: var(--shadow);
       margin-bottom: var(--space-4);
       font-size: 0.95rem;
@@ -280,19 +300,54 @@
     .side-section h3{
       margin: 0 0 var(--space-2);
       font-size: 1rem;
-      font-weight: 650;
+      font-weight: 750;
+      letter-spacing: 0.01em;
+    }
+
+    .meta-label{
+      display:inline-block;
+      font-size: 0.82rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
     }
 
     .profile-link{
       display: inline-flex;
       align-items: center;
       gap: 0.55rem;
+      text-decoration: none;
+      color: var(--text);
+      padding: 0.35rem 0.45rem;
+      border-radius: 10px;
+    }
+    .profile-link:hover{
+      background: color-mix(in srgb, var(--surface-2) 70%, transparent);
     }
 
     .profile-link img{
       width: 16px;
       height: 16px;
       display: inline-block;
+      opacity: 0.9;
+    }
+
+    /* Button-style link (optional) */
+    .btn-link{
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 0.75rem;
+      border-radius: 12px;
+      background: color-mix(in srgb, var(--accent) 10%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--border));
+      color: var(--accent-strong);
+      text-decoration: none;
+      font-weight: 650;
+    }
+    .btn-link:hover{
+      background: color-mix(in srgb, var(--accent) 14%, transparent);
     }
 
     iframe{
@@ -326,15 +381,17 @@
         <h1>Nora Skjerdingstad</h1>
         <p class="subtitle">PhD Student and Clinical Psychologist, University of Oxford</p>
       </div>
-
-      <nav aria-label="Primary">
-        <a href="#home" data-target="home" class="active">Home</a>
-        <a href="#publications" data-target="publications">Publications</a>
-        <a href="#teaching-talks" data-target="teaching-talks">Teaching &amp; Talks</a>
-        <a href="#cv" data-target="cv">CV</a>
-      </nav>
     </div>
   </header>
+
+  <div class="nav-wrap">
+    <nav aria-label="Primary">
+      <a href="#home" data-target="home" class="active" aria-current="page">Home</a>
+      <a href="#publications" data-target="publications">Publications</a>
+      <a href="#teaching-talks" data-target="teaching-talks">Teaching &amp; Talks</a>
+      <a href="#cv" data-target="cv">CV</a>
+    </nav>
+  </div>
 
   <div class="page">
     <div class="layout">
@@ -346,8 +403,13 @@
               <img src="Nora_farger copy.jpg" alt="Portrait of Nora Skjerdingstad" />
             </div>
             <div class="home-text">
+              <h2 style="border-bottom:none; padding-bottom:0; margin-bottom:0.5rem;">About</h2>
               <p>
-                My research focuses on understanding how social anxiety develops and is maintained in young people, particularly in the context of digital environments and social media. I apply a range of methodological approaches, including Ecological Momentary Assessment (EMA), experimental designs, and secondary data analysis. I am also interested in how young people respond to internet-delivered treatments, with a focus on individual differences and the potential to tailor interventions to improve their effectiveness.
+                My research focuses on understanding how social anxiety develops and is maintained in young people,
+                particularly in the context of digital environments and social media. I apply a range of methodological
+                approaches, including Ecological Momentary Assessment (EMA), experimental designs, and secondary data analysis.
+                I am also interested in how young people respond to internet-delivered treatments, with a focus on individual
+                differences and the potential to tailor interventions to improve their effectiveness.
               </p>
             </div>
           </div>
@@ -362,7 +424,6 @@
           </p>
 
           <ul class="publication-list">
-
             <li>
               <strong>2025</strong><br>
               Smith, K. V., Skjerdingstad, N., Ebrahimi, O. V., Maccallum, F., &amp; Ehlers, A.
@@ -455,7 +516,6 @@
               <a href="https://pubmed.ncbi.nlm.nih.gov/34311806/" target="_blank" rel="noopener noreferrer">Article</a> ·
               <a href="https://doi.org/10.1192/j.eurpsy.2021.2223" target="_blank" rel="noopener noreferrer">DOI</a>
             </li>
-
           </ul>
         </section>
 
@@ -469,39 +529,45 @@
         <section id="cv" class="tab-section">
           <h2>CV</h2>
           <iframe src="CV_November2025.pdf" title="Curriculum vitae PDF"></iframe>
-          <p>
-            <a href="CV_November2025.pdf" target="_blank" rel="noopener noreferrer">Download my CV (PDF)</a>
+          <p style="margin-top: 0.9rem;">
+            <a class="btn-link" href="CV_November2025.pdf" target="_blank" rel="noopener noreferrer">Download my CV (PDF)</a>
           </p>
         </section>
       </main>
 
       <aside>
         <div class="side-section">
-          <h3>Contact</h3>
+          <div class="meta-label">Contact</div>
+          <h3 style="margin-top:0;">Nora Skjerdingstad</h3>
           <p><strong>Email:</strong> <a href="mailto:nora.skjerdingstad@psy.ox.ac.uk">nora.skjerdingstad@psy.ox.ac.uk</a></p>
           <p>Department of Experimental Psychology<br>University of Oxford</p>
         </div>
 
         <div class="side-section">
-          <h3>Profiles &amp; Links</h3>
+          <div class="meta-label">Profiles</div>
+          <h3 style="margin-top:0;">Links</h3>
+
           <p>
             <a class="profile-link" href="https://scholar.google.com/citations?user=TSRnmxIAAAAJ&amp;hl=no" target="_blank" rel="noopener noreferrer">
               <img src="scholar.svg" alt="">
               <span>Google Scholar</span>
             </a>
           </p>
+
           <p>
             <a class="profile-link" href="https://www.researchgate.net/profile/Nora-Skjerdingstad?ev=hdr_xprf" target="_blank" rel="noopener noreferrer">
               <img src="researchgate.svg" alt="">
               <span>ResearchGate</span>
             </a>
           </p>
+
           <p>
             <a class="profile-link" href="https://bsky.app/profile/noraskjerdingstad.bsky.social" target="_blank" rel="noopener noreferrer">
               <img src="bluesky.svg" alt="">
               <span>Bluesky</span>
             </a>
           </p>
+
           <p>
             <a class="profile-link" href="https://www.psy.ox.ac.uk/people/nora-skjerdingstad" target="_blank" rel="noopener noreferrer">
               <img src="oxford.svg" alt="">
@@ -525,7 +591,12 @@
 
     function activateTab(id, pushHash = true){
       sections.forEach(sec => sec.classList.toggle('active', sec.id === id));
-      navLinks.forEach(link => link.classList.toggle('active', link.dataset.target === id));
+      navLinks.forEach(link => {
+        const isActive = link.dataset.target === id;
+        link.classList.toggle('active', isActive);
+        if (isActive) link.setAttribute('aria-current', 'page');
+        else link.removeAttribute('aria-current');
+      });
       if (pushHash) history.pushState({ tab: id }, '', '#' + id);
     }
 
