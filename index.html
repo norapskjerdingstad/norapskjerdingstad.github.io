@@ -6,510 +6,540 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Nora Skjerdingstad – PhD Student and Clinical Psychologist, University of Oxford" />
 
-  <!-- Sleek modern font -->
+  <!-- Modern, readable font -->
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Favicon (will work with either favicon.ico or favicon.png if present) -->
   <link rel="icon" type="image/png" href="favicon.png?v=1">
-  
+
   <style>
-    :root {
+    :root{
       --bg: #ffffff;
-      --bg-alt: #ffffff;
-      --text: #151015;
+      --surface: #ffffff;
+      --surface-2: #fbf6f9;
+      --text: #19101a;
       --muted: #6b626c;
-      --accent: #d86a8c;
-      --accent-soft: rgba(216, 106, 140, 0.12);
-      --accent-strong: #b5425a;
-      --border: #e1d4dd;
-      --max-width: 900px;
-      color-scheme: light dark;
+      --accent: #b84560;
+      --accent-strong: #8d2b3f;
+      --border: #eadbe5;
+      --shadow: 0 10px 30px rgba(0,0,0,0.06);
+      --max-width: 980px;
+
+      --radius: 14px;
+      --radius-sm: 10px;
+
+      --space-1: 0.5rem;
+      --space-2: 0.75rem;
+      --space-3: 1rem;
+      --space-4: 1.5rem;
+      --space-5: 2rem;
+      --space-6: 2.75rem;
+
+      --focus: 0 0 0 3px rgba(184, 69, 96, 0.35);
+      color-scheme: light;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      font-size: 14px;
-    }
-
-    header {
-      width: 100%;
-      padding: 1.5rem min(5vw, 2rem) 1.25rem;
-      background: linear-gradient(135deg, #8d2b3f, #b84560);
-      color: #fdf8fb;
-    }
-
-    .header-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 1.1rem;
-    }
-
-    @media (min-width: 720px){
-      .header-inner {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-end;
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg: #070309;
+        --surface: #120a14;
+        --surface-2: #1a1020;
+        --text: #f6edf6;
+        --muted: #b4a5b4;
+        --accent: #f3a0bb;
+        --accent-strong: #ffb7cc;
+        --border: #332436;
+        --shadow: 0 12px 34px rgba(0,0,0,0.5);
+        color-scheme: dark;
       }
     }
 
-    .title-block h1 {
-      font-size: clamp(2.1rem, 3vw, 2.7rem);
-      margin: 0 0 0.25rem;
+    *{ box-sizing: border-box; }
+
+    html{
+      scroll-behavior: smooth;
+    }
+
+    body{
+      margin:0;
+      font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, var(--surface-2) 0, var(--bg) 55%);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* Accessibility: skip link */
+    .skip-link{
+      position:absolute;
+      left:-999px;
+      top: var(--space-3);
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 0.6rem 0.9rem;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow);
+      z-index: 999;
+    }
+    .skip-link:focus{
+      left: var(--space-3);
+      outline: none;
+      box-shadow: var(--focus), var(--shadow);
+    }
+
+    header{
+      width:100%;
+      padding: var(--space-6) min(5vw, 2rem) var(--space-5);
+      background: linear-gradient(135deg, #7b2336, #b84560);
+      color:#fff;
+    }
+
+    .header-inner{
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display:flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    @media (min-width: 760px){
+      .header-inner{
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+      }
+    }
+
+    .title-block h1{
+      margin:0 0 0.2rem;
+      font-size: clamp(2.1rem, 3.1vw, 2.8rem);
       letter-spacing: 0.01em;
       font-weight: 600;
     }
 
-    .subtitle {
-      margin: 0;
-      color: #f7dfe9;
-      font-size: 0.97rem;
-      max-width: 34rem;
+    .subtitle{
+      margin:0;
+      max-width: 40rem;
+      color: rgba(255,255,255,0.88);
+      font-size: 1.02rem;
     }
 
-    nav {
-      font-size: 0.93rem;
-      display: flex;
+    nav{
+      display:flex;
       flex-wrap: wrap;
       gap: 0.9rem;
+      font-size: 0.98rem;
     }
 
-    nav a,
-    nav a:visited {
-      color: #ffffff !important;
-      text-decoration: none;
+    nav a{
+      color:#fff;
+      text-decoration:none;
+      padding: 0.2rem 0;
       border-bottom: 2px solid transparent;
       opacity: 0.9;
-      cursor: pointer;
-      font-weight: 400;
-      padding: 0.1rem 0;
+      font-weight: 450;
     }
 
-    nav a.active {
-      border-bottom-color: #ffffff;
-      opacity: 1;
-      font-weight: 500;
+    nav a:hover{ opacity:1; border-bottom-color: rgba(255,255,255,0.65); }
+    nav a.active{ opacity:1; border-bottom-color:#fff; font-weight: 600; }
+
+    nav a:focus-visible{
+      outline: none;
+      box-shadow: var(--focus);
+      border-radius: 6px;
+      padding: 0.2rem 0.35rem;
+      margin: 0 -0.35rem;
     }
 
-    nav a:hover {
-      opacity: 1;
-      border-bottom-color: rgba(255,255,255,0.7);
-    }
-
-    .page {
+    .page{
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 2.25rem 1.25rem 3rem;
+      padding: var(--space-6) 1.25rem 3.5rem;
     }
 
-    main {
-      display: grid;
-      grid-template-columns: 2.5fr 1.4fr;
-      gap: 2.25rem;
-    }
-
-    @media (max-width: 800px){
-      main {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    section {
-      margin-bottom: 2rem;
-    }
-
-    h2 {
-      font-size: 1.15rem;
-      margin: 0 0 0.9rem;
-      padding-bottom: 0.35rem;
-      border-bottom: 1px solid var(--border);
-      font-weight: 500;
-      letter-spacing: 0.01em;
-    }
-
-    p {
-      margin: 0 0 0.75rem;
-    }
-
-    ul {
-  margin: 0;
-  padding: 0;
-  list-style: none; /* removes bullets */
-   }
-
-ul.publication-list li {
-  margin-bottom: 1.2rem; /* spacing between items */
-}
-
-    li + li {
-      margin-top: 0.25rem;
-    }
-
-    .home-layout {
-      display: grid;
-      grid-template-columns: 1.1fr 1.9fr;
-      gap: 1.5rem;
+    .layout{
+      display:grid;
+      grid-template-columns: 2.6fr 1.3fr;
+      gap: var(--space-5);
       align-items: start;
     }
 
-    @media (max-width: 720px){
-      .home-layout {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width: 900px){
+      .layout{ grid-template-columns: 1fr; }
     }
 
-    .home-photo {
-      display: flex;
-      justify-content: center;
-    }
-
-    .home-photo img {
-      width: 190px;
-      height: 190px;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-      border: 3px solid #ffffff;
-    }
-
-    .home-text p {
-      font-size: 0.93rem;
-      line-height: 1.7;
-    }
-
-    .tab-section {
-      display: none;
-      animation: fadeIn 0.2s ease-out;
-    }
-
-    .tab-section.active {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(2px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .side-section {
-      background: var(--bg-alt);
+    /* Main content surface */
+    .content-surface{
+      background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 0.75rem;
-      padding: 1rem 1.1rem;
-      margin-bottom: 1rem;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
-      font-size: 0.9rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(1rem, 2.2vw, 1.6rem);
     }
 
-    .side-section h3 {
-      margin: 0 0 0.5rem;
-      font-size: 1rem;
-      font-weight: 500;
+    section{ margin-bottom: var(--space-5); }
+    section:last-child{ margin-bottom: 0; }
+
+    h2{
+      margin: 0 0 var(--space-3);
+      padding-bottom: var(--space-2);
+      border-bottom: 1px solid var(--border);
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
     }
 
-    a,
-    a:visited {
-      color: var(--accent-strong) !important;
+    p{ margin: 0 0 var(--space-3); }
+    p:last-child{ margin-bottom: 0; }
+
+    .home-layout{
+      display:grid;
+      grid-template-columns: 220px 1fr;
+      gap: var(--space-5);
+      align-items: start;
+    }
+
+    @media (max-width: 760px){
+      .home-layout{ grid-template-columns: 1fr; }
+    }
+
+    .home-photo{
+      display:flex;
+      justify-content:center;
+    }
+
+    .home-photo img{
+      width: 210px;
+      height: 210px;
+      border-radius: 999px;
+      object-fit: cover;
+      border: 4px solid rgba(255,255,255,0.95);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+    }
+
+    .tab-section{ display:none; animation: fadeIn 0.22s ease-out; }
+    .tab-section.active{ display:block; }
+
+    @keyframes fadeIn{
+      from{ opacity:0; transform: translateY(3px); }
+      to{ opacity:1; transform: translateY(0); }
+    }
+
+    /* Publications list */
+    ul{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    ul.publication-list li{
+      padding: 0.85rem 0;
+      border-bottom: 1px dashed var(--border);
+    }
+    ul.publication-list li:last-child{
+      border-bottom: none;
+    }
+
+    a{
+      color: var(--accent-strong);
       text-decoration-thickness: 1px;
       text-underline-offset: 2px;
     }
+    a:hover{ text-decoration-thickness: 2px; }
 
-    .profile-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
+    a:focus-visible{
+      outline: none;
+      box-shadow: var(--focus);
+      border-radius: 6px;
     }
 
-    .profile-link img {
+    /* Sidebar cards */
+    .side-section{
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.2rem;
+      box-shadow: var(--shadow);
+      margin-bottom: var(--space-4);
+      font-size: 0.95rem;
+    }
+
+    .side-section h3{
+      margin: 0 0 var(--space-2);
+      font-size: 1rem;
+      font-weight: 650;
+    }
+
+    .profile-link{
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .profile-link img{
       width: 16px;
       height: 16px;
       display: inline-block;
-      vertical-align: middle;
     }
 
-    iframe {
+    iframe{
       width: 100%;
-      height: 700px;
+      height: 720px;
       border: 1px solid var(--border);
-      border-radius: 6px;
-      background: #fff;
+      border-radius: var(--radius-sm);
+      background: var(--surface);
     }
 
-    footer {
-      margin-top: 2.25rem;
-      padding-top: 0.75rem;
+    footer{
+      margin-top: var(--space-5);
+      padding-top: var(--space-3);
       border-top: 1px solid var(--border);
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       color: var(--muted);
-      text-align: left;
     }
 
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #070309;
-        --bg-alt: #15101a;
-        --text: #f5edf5;
-        --muted: #a99aa9;
-        --accent: #d86a8c;
-        --accent-soft: rgba(216, 106, 140, 0.25);
-        --accent-strong: #f3a0bb;
-        --border: #332436;
-      }
-
-      body {
-        background: radial-gradient(circle at top, #251029 0, #070309 60%);
-      }
-
-      .side-section {
-        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
-      }
-
-      nav a,
-      nav a:visited {
-        color: #ffffff !important;
-      }
+    /* Reduce motion preference */
+    @media (prefers-reduced-motion: reduce){
+      *{ animation: none !important; transition: none !important; scroll-behavior: auto !important; }
     }
   </style>
 </head>
+
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<header>
-  <div class="header-inner">
-    <div class="title-block">
-      <h1>Nora Skjerdingstad</h1>
-      <p class="subtitle">
-        PhD Student and Clinical Psychologist, University of Oxford
-      </p>
+  <header>
+    <div class="header-inner">
+      <div class="title-block">
+        <h1>Nora Skjerdingstad</h1>
+        <p class="subtitle">PhD Student and Clinical Psychologist, University of Oxford</p>
+      </div>
+
+      <nav aria-label="Primary">
+        <a href="#home" data-target="home" class="active">Home</a>
+        <a href="#publications" data-target="publications">Publications</a>
+        <a href="#teaching-talks" data-target="teaching-talks">Teaching &amp; Talks</a>
+        <a href="#cv" data-target="cv">CV</a>
+      </nav>
     </div>
-    <nav>
-      <a href="#home" data-target="home" class="active">Home</a>
-      <a href="#publications" data-target="publications">Publications</a>
-      <a href="#teaching-talks" data-target="teaching-talks">Teaching &amp; Talks</a>
-      <a href="#cv" data-target="cv">CV</a>
-    </nav>
-  </div>
-</header>
+  </header>
 
-<div class="page">
-  <main>
-    <div>
-      <!-- HOME -->
-      <section id="home" class="tab-section active">
-        <div class="home-layout">
-          <div class="home-photo">
-            <img src="Nora_farger copy.jpg" alt="Portrait of Nora Skjerdingstad" />
+  <div class="page">
+    <div class="layout">
+      <main id="main" class="content-surface">
+        <!-- HOME -->
+        <section id="home" class="tab-section active">
+          <div class="home-layout">
+            <div class="home-photo">
+              <img src="Nora_farger copy.jpg" alt="Portrait of Nora Skjerdingstad" />
+            </div>
+            <div class="home-text">
+              <p>
+                My research focuses on understanding how social anxiety develops and is maintained in young people, particularly in the context of digital environments and social media. I apply a range of methodological approaches, including Ecological Momentary Assessment (EMA), experimental designs, and secondary data analysis. I am also interested in how young people respond to internet-delivered treatments, with a focus on individual differences and the potential to tailor interventions to improve their effectiveness.
+              </p>
+            </div>
           </div>
-          <div class="home-text">
-            <p>
-              My research focuses on understanding how social anxiety develops and is maintained in young people, particularly in the context of digital environments and social media. I apply a range of methodological approaches, including Ecological Momentary Assessment (EMA), experimental designs, and secondary data analysis. I am also interested in how young people respond to internet-delivered treatments, with a focus on individual differences and the potential to tailor interventions to improve their effectiveness.
-            </p>
-          </div>
+        </section>
+
+        <!-- PUBLICATIONS -->
+        <section id="publications" class="tab-section" aria-labelledby="pubs-title">
+          <h2 id="pubs-title">Publications</h2>
+          <p>
+            A full and up-to-date list of publications is available on my
+            <a href="https://scholar.google.com/citations?user=TSRnmxIAAAAJ&amp;hl=no" target="_blank" rel="noopener noreferrer">Google Scholar profile</a>.
+          </p>
+
+          <ul class="publication-list">
+            <li>
+              <strong>2025</strong><br>
+              Smith, K. V., Skjerdingstad, N., Ebrahimi, O. V., Maccallum, F., &amp; Ehlers, A.
+              <em>Unraveling attachment: A network analysis of the cognitive pathways linking attachment and prolonged grief.</em>
+              <span>Psychological Medicine.</span>
+              <a href="https://doi.org/10.1017/S0033291725101669" target="_blank" rel="noopener noreferrer">DOI</a>
+            </li>
+
+            <li>
+              <strong>2025</strong><br>
+              Skjerdingstad, N., Johnson, M. S., Johnson, S. U., Hoffart, A., &amp; Ebrahimi, O. V.
+              <em>Daily dynamics of parental mental health.</em>
+              Journal of Psychiatric Research, 190, 341–346.
+              <a href="https://pubmed.ncbi.nlm.nih.gov/40819622/" target="_blank" rel="noopener noreferrer">Article</a> ·
+              <a href="https://doi.org/10.1016/j.jpsychires.2025.08.007" target="_blank" rel="noopener noreferrer">DOI</a>
+            </li>
+
+            <li>
+              <strong>2025</strong><br>
+              Finnemann, A., Skjerdingstad, N., et al.
+              <em>Urban–rural differences in anxiety and depression in the UK, New Zealand, and Norway.</em>
+              Journal of Affective Disorders, 388, 119601.
+            </li>
+
+            <li>
+              <strong>2025</strong><br>
+              Hoffart, A., Skjerdingstad, N., et al.
+              <em>Mapping the dynamics of generalized anxiety symptoms.</em>
+              Depression and Anxiety.
+              <a href="https://doi.org/10.1002/da.23082" target="_blank" rel="noopener noreferrer">DOI</a>
+            </li>
+
+            <li>
+              <strong>2024</strong><br>
+              Hoffart, A., Skjerdingstad, N., et al.
+              <em>Depressive symptoms and their mechanisms: A panel-network approach.</em>
+              Clinical Psychological Science, 12(5), 903–916.
+            </li>
+
+            <li>
+              <strong>2024</strong><br>
+              Skjerdingstad, N., Speyer, L. G., Isvoranu, A.-M., Moe, V., &amp; Fredriksen, E.
+              <em>Dynamics of postnatal depressive symptoms in early parenthood.</em>
+              BMC Psychiatry, 24, 523.
+              <a href="https://bmcpsychiatry.biomedcentral.com/articles/10.1186/s12888-024-05934-6" target="_blank" rel="noopener noreferrer">Article</a> ·
+              <a href="https://doi.org/10.1186/s12888-024-05934-6" target="_blank" rel="noopener noreferrer">DOI</a>
+            </li>
+
+            <li>
+              <strong>2024</strong><br>
+              Johnson, M. S., Skjerdingstad, N., et al.
+              <em>Triggered by worry: A dynamic network analysis of COVID-19 anxiety and parental stress.</em>
+              Journal of Affective Disorders, 346, 329–337.
+              <a href="https://pubmed.ncbi.nlm.nih.gov/37977301/" target="_blank" rel="noopener noreferrer">Article</a> ·
+              <a href="https://doi.org/10.1016/j.jad.2023.10.127" target="_blank" rel="noopener noreferrer">DOI</a>
+            </li>
+
+            <li>
+              <strong>2024</strong><br>
+              Skjerdingstad, N.
+              <em>An inhibitory learning-based turn in exposure therapy.</em>
+              Nature Reviews Psychology, 3, 726.
+              <a href="https://www.nature.com/articles/s44159-024-00370-5" target="_blank" rel="noopener noreferrer">Article</a> ·
+              <a href="https://doi.org/10.1038/s44159-024-00370-5" target="_blank" rel="noopener noreferrer">DOI</a>
+            </li>
+
+            <li>
+              <strong>2022</strong><br>
+              Skjerdingstad, N., Johnson, M. S., et al.
+              <em>Parental burnout during the COVID-19 pandemic.</em>
+              Family Process, 61(4), 1715–1729.
+              <a href="https://pubmed.ncbi.nlm.nih.gov/34908167/" target="_blank" rel="noopener noreferrer">Article</a> ·
+              <a href="https://doi.org/10.1111/famp.12740" target="_blank" rel="noopener noreferrer">DOI</a>
+            </li>
+
+            <li>
+              <strong>2022</strong><br>
+              Johnson, S. U., Amundsen, O. M., Skjerdingstad, N., et al.
+              <em>Trajectories of depression, anxiety, and insomnia in COVID-19 positive individuals.</em>
+              Psychiatry Research, 317, 114806.
+              <a href="https://pubmed.ncbi.nlm.nih.gov/36084543/" target="_blank" rel="noopener noreferrer">Article</a> ·
+              <a href="https://doi.org/10.1016/j.psychres.2022.114806" target="_blank" rel="noopener noreferrer">DOI</a>
+            </li>
+
+            <li>
+              <strong>2021</strong><br>
+              Skjerdingstad, N., Johnson, M. S., Johnson, S. U., Hoffart, A., &amp; Ebrahimi, O. V.
+              <em>Feelings of worthlessness links depressive symptoms and parental stress.</em>
+              European Psychiatry, 64(1), e50.
+              <a href="https://pubmed.ncbi.nlm.nih.gov/34311806/" target="_blank" rel="noopener noreferrer">Article</a> ·
+              <a href="https://doi.org/10.1192/j.eurpsy.2021.2223" target="_blank" rel="noopener noreferrer">DOI</a>
+            </li>
+          </ul>
+        </section>
+
+        <!-- TEACHING & TALKS -->
+        <section id="teaching-talks" class="tab-section">
+          <h2>Teaching &amp; Talks</h2>
+          <p>Information about teaching activities and selected talks will be added here.</p>
+        </section>
+
+        <!-- CV -->
+        <section id="cv" class="tab-section">
+          <h2>CV</h2>
+          <iframe src="CV_November2025.pdf" title="Curriculum vitae PDF"></iframe>
+          <p>
+            <a href="CV_November2025.pdf" target="_blank" rel="noopener noreferrer">Download my CV (PDF)</a>
+          </p>
+        </section>
+      </main>
+
+      <aside>
+        <div class="side-section">
+          <h3>Contact</h3>
+          <p><strong>Email:</strong> <a href="mailto:nora.skjerdingstad@psy.ox.ac.uk">nora.skjerdingstad@psy.ox.ac.uk</a></p>
+          <p>Department of Experimental Psychology<br>University of Oxford</p>
         </div>
-      </section>
 
-      <!-- PUBLICATIONS -->
-<section id="publications" class="tab-section">
-  <h2>Publications</h2>
-  <p>
-    A full and up-to-date list of publications is available on my
-    <a href="https://scholar.google.com/citations?user=TSRnmxIAAAAJ&amp;hl=no" target="_blank" rel="noopener noreferrer">Google Scholar profile</a>.
-  </p>
-
-  <ul class="publication-list">
-
-    <!-- 2025 -->
-    <li>
-      <strong>2025</strong><br>
-      Smith, K. V., Skjerdingstad, N., Ebrahimi, O. V., Maccallum, F., &amp; Ehlers, A.  
-      <em>Unraveling attachment: A network analysis of the cognitive pathways linking attachment and prolonged grief.</em>  
-      <span>Psychological Medicine.</span>  
-      <a href="https://doi.org/10.1017/S0033291725101669" target="_blank">DOI</a>
-    </li>
-
-    <li>
-      <strong>2025</strong><br>
-      Skjerdingstad, N., Johnson, M. S., Johnson, S. U., Hoffart, A., &amp; Ebrahimi, O. V.  
-      <em>Daily dynamics of parental mental health.</em>  
-      Journal of Psychiatric Research, 190, 341–346.  
-      <a href="https://pubmed.ncbi.nlm.nih.gov/40819622/" target="_blank">Article</a> ·
-      <a href="https://doi.org/10.1016/j.jpsychires.2025.08.007" target="_blank">DOI</a>
-    </li>
-
-    <li>
-      <strong>2025</strong><br>
-      Finnemann, A., Skjerdingstad, N., et al.  
-      <em>Urban–rural differences in anxiety and depression in the UK, New Zealand, and Norway.</em>  
-      Journal of Affective Disorders, 388, 119601.
-    </li>
-
-    <li>
-      <strong>2025</strong><br>
-      Hoffart, A., Skjerdingstad, N., et al.  
-      <em>Mapping the dynamics of generalized anxiety symptoms.</em>  
-      Depression and Anxiety.  
-      <a href="https://doi.org/10.1002/da.23082" target="_blank">DOI</a>
-    </li>
-
-    <!-- 2024 -->
-    <li>
-      <strong>2024</strong><br>
-      Hoffart, A., Skjerdingstad, N., et al.  
-      <em>Depressive symptoms and their mechanisms: A panel-network approach.</em>  
-      Clinical Psychological Science, 12(5), 903–916.
-    </li>
-
-    <li>
-      <strong>2024</strong><br>
-      Skjerdingstad, N., Speyer, L. G., Isvoranu, A.-M., Moe, V., &amp; Fredriksen, E.  
-      <em>Dynamics of postnatal depressive symptoms in early parenthood.</em>  
-      BMC Psychiatry, 24, 523.  
-      <a href="https://bmcpsychiatry.biomedcentral.com/articles/10.1186/s12888-024-05934-6" target="_blank">Article</a> ·
-      <a href="https://doi.org/10.1186/s12888-024-05934-6" target="_blank">DOI</a>
-    </li>
-
-    <li>
-      <strong>2024</strong><br>
-      Johnson, M. S., Skjerdingstad, N., et al.  
-      <em>Triggered by worry: A dynamic network analysis of COVID-19 anxiety and parental stress.</em>  
-      Journal of Affective Disorders, 346, 329–337.  
-      <a href="https://pubmed.ncbi.nlm.nih.gov/37977301/" target="_blank">Article</a> ·
-      <a href="https://doi.org/10.1016/j.jad.2023.10.127" target="_blank">DOI</a>
-    </li>
-
-    <li>
-      <strong>2024</strong><br>
-      Skjerdingstad, N.  
-      <em>An inhibitory learning-based turn in exposure therapy.</em>  
-      Nature Reviews Psychology, 3, 726.  
-      <a href="https://www.nature.com/articles/s44159-024-00370-5" target="_blank">Article</a> ·
-      <a href="https://doi.org/10.1038/s44159-024-00370-5" target="_blank">DOI</a>
-    </li>
-
-    <!-- 2022 -->
-    <li>
-      <strong>2022</strong><br>
-      Skjerdingstad, N., Johnson, M. S., et al.  
-      <em>Parental burnout during the COVID-19 pandemic.</em>  
-      Family Process, 61(4), 1715–1729.  
-      <a href="https://pubmed.ncbi.nlm.nih.gov/34908167/" target="_blank">Article</a> ·
-      <a href="https://doi.org/10.1111/famp.12740" target="_blank">DOI</a>
-    </li>
-
-    <li>
-      <strong>2022</strong><br>
-      Johnson, S. U., Amundsen, O. M., Skjerdingstad, N., et al.  
-      <em>Trajectories of depression, anxiety, and insomnia in COVID-19 positive individuals.</em>  
-      Psychiatry Research, 317, 114806.  
-      <a href="https://pubmed.ncbi.nlm.nih.gov/36084543/" target="_blank">Article</a> ·
-      <a href="https://doi.org/10.1016/j.psychres.2022.114806" target="_blank">DOI</a>
-    </li>
-
-    <!-- 2021 -->
-    <li>
-      <strong>2021</strong><br>
-      Skjerdingstad, N., Johnson, M. S., Johnson, S. U., Hoffart, A., &amp; Ebrahimi, O. V.  
-      <em>Feelings of worthlessness links depressive symptoms and parental stress.</em>  
-      European Psychiatry, 64(1), e50.  
-      <a href="https://pubmed.ncbi.nlm.nih.gov/34311806/" target="_blank">Article</a> ·
-      <a href="https://doi.org/10.1192/j.eurpsy.2021.2223" target="_blank">DOI</a>
-    </li>
-
-  </ul>
-</section>
-
-      <!-- TEACHING & TALKS -->
-      <section id="teaching-talks" class="tab-section">
-        <h2>Teaching &amp; Talks</h2>
-        <p>Information about teaching activities and selected talks will be added here.</p>
-      </section>
-
-      <!-- CV -->
-      <section id="cv" class="tab-section">
-        <h2>CV</h2>
-        <iframe src="CV_November2025.pdf"></iframe>
-        <p>
-          <a href="CV_November2025.pdf" target="_blank" rel="noopener noreferrer">
-            Download my CV (PDF)
-          </a>
-        </p>
-      </section>
+        <div class="side-section">
+          <h3>Profiles &amp; Links</h3>
+          <p>
+            <a class="profile-link" href="https://scholar.google.com/citations?user=TSRnmxIAAAAJ&amp;hl=no" target="_blank" rel="noopener noreferrer">
+              <img src="scholar.svg" alt="">
+              <span>Google Scholar</span>
+            </a>
+          </p>
+          <p>
+            <a class="profile-link" href="https://www.researchgate.net/profile/Nora-Skjerdingstad?ev=hdr_xprf" target="_blank" rel="noopener noreferrer">
+              <img src="researchgate.svg" alt="">
+              <span>ResearchGate</span>
+            </a>
+          </p>
+          <p>
+            <a class="profile-link" href="https://bsky.app/profile/noraskjerdingstad.bsky.social" target="_blank" rel="noopener noreferrer">
+              <img src="bluesky.svg" alt="">
+              <span>Bluesky</span>
+            </a>
+          </p>
+          <p>
+            <a class="profile-link" href="https://www.psy.ox.ac.uk/people/nora-skjerdingstad" target="_blank" rel="noopener noreferrer">
+              <img src="oxford.svg" alt="">
+              <span>Academic website</span>
+            </a>
+          </p>
+        </div>
+      </aside>
     </div>
 
-    <!-- SIDEBAR -->
-    <aside>
-      <div class="side-section">
-        <h3>Contact</h3>
-        <p><strong>Email:</strong> <a href="mailto:nora.skjerdingstad@psy.ox.ac.uk">nora.skjerdingstad@psy.ox.ac.uk</a></p>
-        <p>Department of Experimental Psychology<br>University of Oxford</p>
-      </div>
+    <footer>
+      &copy; <span id="year"></span> Nora Skjerdingstad. All rights reserved.
+    </footer>
+  </div>
 
-      <div class="side-section">
-        <h3>Profiles &amp; Links</h3>
-        <p>
-          <a class="profile-link" href="https://scholar.google.com/citations?user=TSRnmxIAAAAJ&amp;hl=no" target="_blank" rel="noopener noreferrer">
-            <img src="scholar.svg" alt="">
-            <span>Google Scholar</span>
-          </a>
-        </p>
-        <p>
-          <a class="profile-link" href="https://www.researchgate.net/profile/Nora-Skjerdingstad?ev=hdr_xprf" target="_blank" rel="noopener noreferrer">
-            <img src="researchgate.svg" alt="">
-            <span>ResearchGate</span>
-          </a>
-        </p>
-        <p>
-          <a class="profile-link" href="https://bsky.app/profile/noraskjerdingstad.bsky.social" target="_blank" rel="noopener noreferrer">
-            <img src="bluesky.svg" alt="">
-            <span>Bluesky</span>
-          </a>
-        </p>
-        <p>
-          <a class="profile-link" href="https://www.psy.ox.ac.uk/people/nora-skjerdingstad" target="_blank" rel="noopener noreferrer">
-            <img src="oxford.svg" alt="">
-            <span>Academic website</span>
-          </a>
-        </p>
-      </div>
-    </aside>
-  </main>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-  <footer>
-    &copy; <span id="year"></span> Nora Skjerdingstad. All rights reserved.
-  </footer>
-</div>
+    const navLinks = document.querySelectorAll('nav a[data-target]');
+    const sections = document.querySelectorAll('.tab-section');
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
+    function activateTab(id, pushHash = true){
+      sections.forEach(sec => sec.classList.toggle('active', sec.id === id));
+      navLinks.forEach(link => link.classList.toggle('active', link.dataset.target === id));
 
-  const navLinks = document.querySelectorAll("nav a[data-target]");
-  const sections = document.querySelectorAll(".tab-section");
+      if (pushHash) {
+        history.pushState({ tab: id }, '', '#' + id);
+      }
+    }
 
-  function activateTab(id) {
-    sections.forEach(sec => sec.classList.toggle("active", sec.id === id));
-    navLinks.forEach(link =>
-      link.classList.toggle("active", link.getAttribute("data-target") === id)
-    );
-  }
-
-  navLinks.forEach(link => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      activateTab(link.getAttribute("data-target"));
+    // Click navigation
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        activateTab(link.dataset.target);
+      });
     });
-  });
 
-  activateTab("home");
-</script>
+    // Load from hash (deep linking)
+    function initialTab(){
+      const hash = (location.hash || '#home').replace('#','');
+      const match = [...sections].some(s => s.id === hash) ? hash : 'home';
+      activateTab(match, false);
+    }
 
+    // Back/forward support
+    window.addEventListener('popstate', () => initialTab());
+
+    initialTab();
+  </script>
 </body>
 </html>
